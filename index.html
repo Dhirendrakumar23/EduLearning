@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+
+
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="spinner"></div>
+        <h3>Loading EduSmart...</h3>
+    </div>
+
+
+
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="edulogo.png" alt="EduSmart Logo">
+            <div class="logoname">
+                <h5>EduSmart</h5>
+            </div>
+        </div>
+        <div class="hamburger" id="hamburger">☰</div>
+        <ul class="nav-list" id="nav-list">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#services" class="nav-link">Courses</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="rightnav">
+            <form id="searchForm">
+                <input type="text" id="search" placeholder="Search" required>
+                <button type="submit" class="btn">Search</button>
+            </form>
+
+            <!-- Account/Profile Section -->
+            <div class="account ms-3" id="account">
+                <div class="d-flex align-items-center">
+                    <img src="courses/profileimage.jpg" alt="User" class="account-img rounded-circle">
+                    <span class="account-name ms-2">Dhirendra Kumar</span>
+                </div>
+                <!-- Dropdown Menu -->
+                <div class="account-dropdown" id="accountDropdown">
+                    <ul>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li><a onclick="window.location.href='courses/loginpage3.html'">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+    </nav>
+    <!-- <nav class="navbar">
+        <div class="logo"><img
+                src="edulogo.png" alt="EduSmart Logo">
+                <div class="logoname"><h5>EduSmart</h5></div>
+            </div>
+        <div class="hamburger" id="hamburger">☰</div>
+        <ul class="nav-list" id="nav-list">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#services" class="nav-link">Courses</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="rightnav">
+            <input type="text" id="search" placeholder="Search">
+            <button class="btn">Search</button>
+        </div>
+    </nav> -->
+
+    <!-- HOME SECTION -->
+    <section class="home" id="home">
+        <div class="home-content">
+            <h1>Welcome to EduSmart</h1>
+            <p>Interactive courses and personalized learning paths to achieve your goals.</p>
+            <!-- <button class="home-button" onclick="alert('Redirecting to courses...')">Start Learning</button> -->
+            <button onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' });">Start
+                Learning</button>
+
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section" id="about">
+        <div class="about-img">
+            <img src="https://img.freepik.com/free-vector/online-learning-concept-illustration_114360-4764.jpg"
+                alt="E-learning">
+        </div>
+        <div class="about-content">
+            <h2>About Us</h2>
+            <p>EduSmart is your next-generation e-learning hub. Expert instructors and interactive courses help you
+                achieve your goals.</p>
+            <div class="stats">
+                <div class="stat-box">
+                    <h3 id="students">0</h3>
+                    <p>Students</p>
+                </div>
+                <div class="stat-box">
+                    <h3 id="courses">0</h3>
+                    <p>Courses</p>
+                </div>
+                <div class="stat-box">
+                    <h3 id="countries">0</h3>
+                    <p>Countries</p>
+                </div>
+                <div class="stat-box">
+                    <h3 id="satisfaction">0%</h3>
+                    <p>Satisfaction</p>
+                </div>
+            </div>
+            <div class="cta">
+                <button onclick="alert('Redirecting to registration page...')">Get Started</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses SECTION -->
+    <section class="services-section" id="services" style="padding:80px 20px; background:#f8f9fa;">
+        <h2 style="text-align:center; color:#222; margin-bottom:50px;">Our Courses</h2>
+        <div class="cards-container">
+            <div class="service-card">
+                <img src="https://e7.pngegg.com/pngimages/266/560/png-clipart-python-computer-icons-programmer-javascript-programming-language-python-logo-angle-text.png"
+                    alt="Python" style="width:80px; margin-bottom:15px;">
+                <h3>Python Programming</h3>
+                <p>Learn Python for web, data, AI and automation projects.</p>
+                <button class="btn-service" onclick="window.location.href='courses/pythonenroll.html'" >Enroll Now</button>
+            </div>
+            <div class="service-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png" alt="C"
+                    style="width:80px; margin-bottom:15px;">
+                <h3>C Programming</h3>
+                <p>Strengthen foundational programming skills with C.</p>
+                <button class="btn-service">Enroll Now</button>
+            </div>
+            <div class="service-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript"
+                    style="width:80px; margin-bottom:15px;">
+                <h3>JavaScript</h3>
+                <p>Master front-end and interactive web development.</p>
+                <button class="btn-service">Enroll Now</button>
+            </div>
+            <div class="service-card">
+                <img src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg" alt="Java"
+                    style="width:80px; margin-bottom:15px;">
+                <h3>Java Development</h3>
+                <p>Learn Java and build scalable applications.</p>
+                <button class="btn-service" onclick="window.location.href='courses/javaenroll.html'" >Enroll Now</button>
+            </div>
+
+        </div>
+        <button class="btn-courses" onclick="window.location.href='courses/course.html'">
+            <p>More Courses</p>
+        </button>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section" id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-container">
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <p>Email: <a href="mailto:info@edusmart.com">info@edusmart.com</a></p>
+                <p>Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+                <p>Address: 123 EduSmart St, Learning City</p>
+                <p>Opening Hours: Mon-Fri 9AM - 6PM</p>
+                <div>
+                    <a href="#" class="social-icon">📧</a>
+                    <a href="#" class="social-icon">📞</a>
+                    <a href="#" class="social-icon">🌐</a>
+                    <a href="#" class="social-icon">🐦</a>
+                    <a href="#" class="social-icon">📘</a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <form class="contact-form">
+                <h3>Send a Message</h3>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="contact-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <footer class="footer-section">
+        <div class="footer-wrapper">
+            <div class="footer-about">
+                <img src="edulogo.png" alt="EduSmart Logo">
+                <p>EduSmart is your next-generation e-learning platform with interactive courses and expert instructors.
+                </p>
+            </div>
+
+            <div class="footer-newsletter">
+                <h4>Newsletter</h4>
+                <p>Subscribe to get latest updates and courses:</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 EduSmart. All Rights Reserved.</p>
+            <div class="footer-social">
+                <a href="#" class="social-icon">🌐</a>
+                <a href="#" class="social-icon">📘</a>
+                <a href="#" class="social-icon">🐦</a>
+                <a href="#" class="social-icon">📸</a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

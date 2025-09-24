@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Courses — EduSmart</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+ <link rel="stylesheet" href="c.css">
+</head>
+<body class="bg-light">
+
+  <!-- NAVBAR -->
+  <nav class="courses-nav d-flex justify-content-between align-items-center flex-wrap">
+    <div class="d-flex align-items-center">
+      <img src="edulogo.png" alt="EduSmart" class="logo me-2">
+      <h5 class="mb-0">EduSmart</h5>
+    </div>
+    <div class="d-flex align-items-center mt-2 mt-md-0">
+      <input type="text" id="searchBox" class="form-control me-2" placeholder="Search courses..."
+        style="width:260px; border-radius:20px; padding:6px 12px;">
+      <button class="btn btn-outline-primary" style="border-radius:20px;" onclick="searchCourses()">Search</button>
+    </div>
+  </nav>
+
+  <!-- COURSES GRID -->
+  <div class="container py-5">
+    <h2 class="text-center mb-4">Our Courses</h2>
+
+    <div class="row g-4 align-items-stretch" id="coursesRow">
+
+      <!-- ✅ Row 1 -->
+      <div class="col-12 col-md-6 col-lg-3 course-item">
+        <div class="card course-card p-3 h-100">
+          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Python" class="course-logo">
+          <div class="card-body text-center">
+            <h5 class="card-title">Python Programming</h5>
+            <p class="card-text">Learn Python from scratch with projects and examples.</p>
+          </div>
+          <div class="px-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center price-row">
+              <div><span class="price">Rs.699/-</span><span class="discount">Rs.999/-</span></div>
+              <!-- <button class="btn btn-primary">Enroll</button> -->
+            </div>
+            <button class="btn btn-success buy-btn" onclick="window.location.href='pythonenroll.html'">Buy Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3 course-item">
+        <div class="card course-card p-3 h-100">
+          <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" alt="Java" class="course-logo">
+          <div class="card-body text-center">
+            <h5 class="card-title">Java Development</h5>
+            <p class="card-text">Master Java programming for web, mobile and desktop apps.</p>
+          </div>
+          <div class="px-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center price-row">
+              <div><span class="price">Rs.999/-</span><span class="discount">Rs.1500</span></div>
+              <!-- <button class="btn btn-primary">Enroll</button> -->
+            </div>
+            <button class="btn btn-success buy-btn" onclick="window.location.href='javaenroll.html'">Buy Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3 course-item">
+        <div class="card course-card p-3 h-100">
+          <img src="  https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png  " alt="JavaScript" class="course-logo">
+          <div class="card-body text-center">
+            <h5 class="card-title">JavaScript</h5>
+            <p class="card-text">Learn JavaScript to build dynamic websites and web apps.</p>
+          </div>
+          <div class="px-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center price-row">
+              <div><span class="price">Rs.899/-</span><span class="discount">Rs.1500</span></div>
+              <!-- <button class="btn btn-primary">Enroll</button> -->
+            </div>
+            <button class="btn btn-success buy-btn">Buy Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3 course-item">
+        <div class="card course-card p-3 h-100">
+          <img src="https://cdn-icons-png.flaticon.com/512/919/919841.png" alt="C++" class="course-logo">
+          <div class="card-body text-center">
+            <h5 class="card-title">C++ Programming</h5>
+            <p class="card-text">Learn OOP concepts and advanced C++ coding techniques.</p>
+          </div>
+          <div class="px-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center price-row">
+              <div><span class="price">Rs.999/-</span><span class="discount">Rs.1500</span></div>
+              <!-- <button class="btn btn-primary">Enroll</button> -->
+            </div>
+            <button class="btn btn-success buy-btn" onclick="window.location.href='C++enroll.html'">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ✅ Row 2 -->
+      <div class="col-12 col-md-6 col-lg-3 course-item">
+        <div class="card course-card p-3 h-100">
+          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" alt="HTML" class="course-logo">
+          <div class="card-body text-center">
+            <h5 class="card-title">HTML & CSS</h5>
+            <p class="card-text">Design beautiful web pages with HTML5 & modern CSS.</p>
+          </div>
+          <div class="px-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center price-row">
+              <div><span class="price">Rs.599/-</span><span class="discount">Rs.1500</span></div>
+              <!-- <button class="btn btn-primary">Enroll</button> -->
+            </div>
+            <button class="btn btn-success buy-btn"  onclick="window.location.href='Enrollhtmlcss.html'" >Buy Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3 course-item">
+        <div class="card course-card p-3 h-100">
+          <img src="https://cdn.iconscout.com/icon/free/png-512/react-1-282599.png" alt="React" class="course-logo">
+          <div class="card-body text-center">
+            <h5 class="card-title">React.js</h5>
+            <p class="card-text">Build modern web apps using React and component-based UI.</p>
+          </div>
+          <div class="px-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center price-row">
+              <div><span class="price">Rs.999/-</span><span class="discount">Rs.1500</span></div>
+              <!-- <button class="btn btn-primary">Enroll</button> -->
+            </div>
+            <button class="btn btn-success buy-btn" onclick="window.location.href='reactjsenroll.html'">Buy Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3 course-item">
+        <div class="card course-card p-3 h-100">
+          <img src="https://cdn.iconscout.com/icon/free/png-512/node-js-1174925.png" alt="Node.js" class="course-logo">
+          <div class="card-body text-center">
+            <h5 class="card-title">Node.js</h5>
+            <p class="card-text">Learn backend development with Node.js & Express.</p>
+          </div>
+          <div class="px-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center price-row">
+              <div><span class="price">Rs.799/-</span><span class="discount">Rs.1500</span></div>
+              <!-- <button class="btn btn-primary">Enroll</button> -->
+            </div>
+            <button class="btn btn-success buy-btn">Buy Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3 course-item">
+        <div class="card course-card p-3 h-100">
+          <img src="https://cdn-icons-png.flaticon.com/512/919/919830.png" alt="PHP" class="course-logo">
+          <div class="card-body text-center">
+            <h5 class="card-title">PHP Development</h5>
+            <p class="card-text">Create dynamic websites and server-side apps using PHP.</p>
+          </div>
+          <div class="px-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center price-row">
+              <div><span class="price">Rs.999/-</span><span class="discount">Rs.1500</span></div>
+              <!-- <button class="btn btn-primary">Enroll</button> -->
+            </div>
+            <button class="btn btn-success buy-btn">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ✅ Row 3 -->
+      <div class="col-12 col-md-6 col-lg-3 course-item">
+        <div class="card course-card p-3 h-100">
+          <img src="https://cdn.iconscout.com/icon/free/png-512/mysql-21-1174941.png" alt="SQL" class="course-logo">
+          <div class="card-body text-center">
+            <h5 class="card-title">SQL Database</h5>
+            <p class="card-text">Learn MySQL and PostgreSQL for database management.</p>
+          </div>
+          <div class="px-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center price-row">
+              <div><span class="price">Rs.999/-</span><span class="discount">Rs.1500</span></div>
+              <!-- <button class="btn btn-primary">Enroll</button> -->
+            </div>
+            <button class="btn btn-success buy-btn">Buy Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3 course-item">
+        <div class="card course-card p-3 h-100">
+          <img src="https://cdn.iconscout.com/icon/free/png-512/mongodb-226029.png" alt="MongoDB" class="course-logo">
+          <div class="card-body text-center">
+            <h5 class="card-title">MongoDB</h5>
+            <p class="card-text">Work with NoSQL database for modern apps and big data.</p>
+          </div>
+          <div class="px-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center price-row">
+              <div><span class="price">Rs.999/-</span><span class="discount">Rs.1500</span></div>
+              <!-- <button class="btn btn-primary">Enroll</button> -->
+            </div>
+            <button class="btn btn-success buy-btn">Buy Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3 course-item">
+        <div class="card course-card p-3 h-100">
+          <img src="https://cdn-icons-png.flaticon.com/512/4149/4149670.png" alt="Data Science" class="course-logo">
+          <div class="card-body text-center">
+            <h5 class="card-title">Data Science</h5>
+            <p class="card-text">Learn data analysis, visualization and predictive models.</p>
+          </div>
+          <div class="px-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center price-row">
+              <div><span class="price">Rs.999/-</span><span class="discount">Rs.1500</span></div>
+              <!-- <button class="btn btn-primary">Enroll</button> -->
+            </div>
+            <button class="btn btn-success buy-btn">Buy Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3 course-item">
+        <div class="card course-card p-3 h-100">
+          <img src="https://cdn-icons-png.flaticon.com/512/2103/2103630.png" alt="Machine Learning" class="course-logo">
+          <div class="card-body text-center">
+            <h5 class="card-title">Machine Learning</h5>
+            <p class="card-text">Build ML models and AI-driven apps using Python.</p>
+          </div>
+          <div class="px-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center price-row">
+              <div><span class="price">Rs.999/-</span><span class="discount">Rs.1500</span></div>
+              <!-- <button class="btn btn-primary">Enroll</button> -->
+            </div>
+            <button class="btn btn-success buy-btn">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+       <!-- ✅ Row 4 (continued) -->
+      <div class="col-12 col-md-6 col-lg-3 course-item">
+        <div class="card course-card p-3 h-100">
+          <img src="https://cdn.iconscout.com/icon/free/png-512/wordpress-2752028-2284838.png" alt="WordPress" class="course-logo">
+          <div class="card-body text-center">
+            <h5 class="card-title">WordPress Development</h5>
+            <p class="card-text">Build blogs, e-commerce and custom sites with WordPress.</p>
+          </div>
+          <div class="px-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center price-row">
+              <div><span class="price">Rs.999/-</span><span class="discount">Rs.1500</span></div>
+              <!-- <button class="btn btn-primary">Enroll</button> -->
+            </div>
+            <button class="btn btn-success buy-btn">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ✅ Row 5 -->
+      <div class="col-12 col-md-6 col-lg-3 course-item">
+        <div class="card course-card p-3 h-100">
+          <img src="https://cdn.iconscout.com/icon/free/png-512/apple-853-675472.png" alt="Swift" class="course-logo">
+          <div class="card-body text-center">
+            <h5 class="card-title">iOS Development (Swift)</h5>
+            <p class="card-text">Learn Swift and build iOS mobile applications from scratch.</p>
+          </div>
+          <div class="px-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center price-row">
+              <div><span class="price">1199</span><span class="discount">Rs.1500</span></div>
+              <!-- <button class="btn btn-primary">Enroll</button> -->
+            </div>
+            <button class="btn btn-success buy-btn">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3 course-item">
+        <div class="card course-card p-3 h-100">
+          <img src="https://cdn.iconscout.com/icon/free/png-512/android-3521272-2944779.png" alt="Android" class="course-logo">
+          <div class="card-body text-center">
+            <h5 class="card-title">Android Development</h5>
+            <p class="card-text">Create Android mobile apps using Kotlin and Java.</p>
+          </div>
+          <div class="px-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center price-row">
+              <div><span class="price">Rs.999/-</span><span class="discount">Rs.1500</span></div>
+              <!-- <button class="btn btn-primary">Enroll</button> -->
+            </div>
+            <button class="btn btn-success buy-btn">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3 course-item">
+        <div class="card course-card p-3 h-100">
+          <img src="https://cdn.iconscout.com/icon/free/png-512/aws-3215369-2673787.png" alt="AWS" class="course-logo">
+          <div class="card-body text-center">
+            <h5 class="card-title">AWS Cloud</h5>
+            <p class="card-text">Master Amazon Web Services for cloud applications.</p>
+          </div>
+          <div class="px-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center price-row">
+              <div><span class="price">Rs.999/-</span><span class="discount">Rs.1500</span></div>
+              <!-- <button class="btn btn-primary">Enroll</button> -->
+            </div>
+            <button class="btn btn-success buy-btn">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3 course-item">
+        <div class="card course-card p-3 h-100">
+          <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Cybersecurity" class="course-logo">
+          <div class="card-body text-center">
+            <h5 class="card-title">Cybersecurity</h5>
+            <p class="card-text">Protect systems and networks from digital threats.</p>
+          </div>
+          <div class="px-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center price-row">
+              <div><span class="price">Rs.999/-</span><span class="discount">Rs.1500</span></div>
+              <!-- <button class="btn btn-primary">Enroll</button> -->
+            </div>
+            <button class="btn btn-success buy-btn">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+       <div class="col-12 col-md-6 col-lg-3 course-item">
+        <div class="card course-card p-3 h-100">
+          <img src="https://cdn-icons-png.flaticon.com/512/2921/2921822.png" alt="Cybersecurity" class="course-logo">
+          <div class="card-body text-center">
+            <h5 class="card-title">UI/UX Design</h5>
+            <p class="card-text">Protect systems and networks from digital threats.</p>
+          </div>
+          <div class="px-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center price-row">
+              <div><span class="price">Rs.1299/-</span><span class="discount">Rs.1500</span></div>
+              <!-- <button class="btn btn-primary">Enroll</button> -->
+            </div>
+            <button class="btn btn-success buy-btn">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+ <div class="col-12 col-md-6 col-lg-3 course-item">
+        <div class="card course-card p-3 h-100">
+          <img src="https://cdn-icons-png.flaticon.com/512/7044/7044736.png" alt="Cybersecurity" class="course-logo">
+          <div class="card-body text-center">
+            <h5 class="card-title">Blockchain Development</h5>
+            <p class="card-text">Protect systems and networks from digital threats.</p>
+          </div>
+          <div class="px-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center price-row">
+              <div><span class="price">Rs.1199/-</span><span class="discount">Rs.1500</span></div>
+              <!-- <button class="btn btn-primary">Enroll</button> -->
+            </div>
+            <button class="btn btn-success buy-btn">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+
+       <div class="col-12 col-md-6 col-lg-3 course-item">
+        <div class="card course-card p-3 h-100">
+          <img src="https://cdn-icons-png.flaticon.com/512/5969/5969346.png" alt="Cybersecurity" class="course-logo">
+          <div class="card-body text-center">
+            <h5 class="card-title">Game Development (Unity)</h5>
+            <p class="card-text">Protect systems and networks from digital threats.</p>
+          </div>
+          <div class="px-3 pb-3">
+            <div class="d-flex justify-content-between align-items-center price-row">
+              <div><span class="price">Rs.999</span><span class="discount">Rs.1500</span></div>
+              <!-- <button class="btn btn-primary">Enroll</button> -->
+            </div>
+            <button class="btn btn-success buy-btn">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div> <!-- END coursesRow -->
+  </div> <!-- END container -->
+
+<script src="course.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

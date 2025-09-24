@@ -1,0 +1,28 @@
+ /* Navbar */
+    .courses-nav {
+      background-color: #f8f9fa;
+      padding: 10px 20px;
+      position: sticky; 
+      top: 0;
+    z-index: 1030;
+    }
+    .logo { height: 40px; }
+
+    /* Cards */
+    .course-card {
+      border-radius: 12px;
+      transition: transform .18s ease, box-shadow .18s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      overflow: hidden;
+    }
+    .course-card:hover { transform: translateY(-6px); box-shadow: 0 10px 30px rgba(0,0,0,.12); }
+    .course-logo { width: 80px; height: 80px; object-fit: contain; margin: 18px auto 6px; display: block; }
+    .card-body { flex: 1 1 auto; }
+    .price { font-size: 1.05rem; font-weight: 700; color: #198754; }
+    .discount { font-size: .9rem; color: #dc3545; text-decoration: line-through; margin-left: .6rem; }
+    .buy-btn { margin-top: .6rem; width: 100%; }
+    .price-row { gap: .5rem; }
+    .card-text { font-size: .95rem; color: #4b5563; }
