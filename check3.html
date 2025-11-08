@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduLearning | User Profile</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #4e54c8, #8f94fb);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      min-height: 100vh;
+      padding: 50px 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-card {
+      width: 100%;
+      max-width: 1250px;
+      background: #fff;
+      border-radius: 25px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .profile-header {
+      background: linear-gradient(135deg, #4e54c8, #8f94fb);
+      color: #fff;
+      text-align: center;
+      padding: 70px 20px;
+    }
+
+    .profile-header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 5px solid #fff;
+      margin-bottom: 15px;
+      animation: popIn 1s ease-in-out;
+    }
+
+    .profile-header h2 {
+      font-size: 2rem;
+      margin-bottom: 5px;
+    }
+
+    .profile-header p {
+      opacity: 0.9;
+    }
+
+    .profile-content {
+      padding: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 25px;
+    }
+
+    .section {
+      background: #f8faff;
+      border-radius: 20px;
+      padding: 25px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      color: #4e54c8;
+      font-weight: 600;
+      margin-bottom: 10px;
+      border-left: 5px solid #8f94fb;
+      padding-left: 10px;
+    }
+
+    .info-list p {
+      margin: 4px 0;
+    }
+
+    /* Progress Bars */
+    .progress-container {
+      background: #e0e7ff;
+      border-radius: 10px;
+      height: 20px;
+      width: 100%;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      background: linear-gradient(135deg, #4e54c8, #8f94fb);
+      height: 100%;
+      width: 0%;
+      border-radius: 10px;
+      transition: width 2s ease-in-out;
+    }
+
+    .skill {
+      margin-bottom: 10px;
+    }
+
+    .skill-bar {
+      background: #e0e7ff;
+      border-radius: 10px;
+      height: 15px;
+      overflow: hidden;
+    }
+
+    .skill-level {
+      height: 100%;
+      background: linear-gradient(135deg, #8f94fb, #4e54c8);
+      width: 0;
+      transition: width 2s ease-in-out;
+    }
+
+    /* Feedback Section */
+    .feedback {
+      background: #fff8f2;
+      border-left: 4px solid #ffb74d;
+      padding: 10px;
+      border-radius: 10px;
+      margin: 8px 0;
+      font-size: 0.9rem;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: #8f94fb;
+    }
+
+    .timeline-item {
+      margin-bottom: 15px;
+    }
+
+    .timeline-item span {
+      font-weight: bold;
+      color: #4e54c8;
+    }
+
+    /* Chart Style */
+    canvas {
+      width: 100%;
+      max-height: 250px;
+    }
+ /* Social Links */
+    .social-links a {
+      text-decoration: none;
+      color: #4e54c8;
+      margin-right: 10px;
+      font-weight: 500;
+    }
+     /* Certificates */
+    .certificates img {
+      width: 100%;
+      max-width: 100px;
+      margin: 5px;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+    .certificates img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .profile-header h2 {
+        font-size: 1.5rem;
+      }
+      .profile-content {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="profile-card">
+      <div class="profile-header">
+        <img src="courses/profileimage.jpg" alt="User Avatar" />
+        <h2>Dhirendra Kumar</h2>
+        <p>Full Stack Development Student | EduLearning</p>
+      </div>
+
+      <div class="profile-content">
+        <!-- About -->
+        <div class="section">
+          <h3 class="section-title">About Me</h3>
+          <p>
+            I’m a passionate learner and aspiring full-stack developer with a
+            focus on creating interactive and scalable web solutions. I enjoy
+            exploring new technologies, building projects, and contributing to
+            team innovations.
+          </p>
+        </div>
+
+        <!-- Personal Info -->
+        <div class="section">
+          <h3 class="section-title">Personal Information</h3>
+          <div class="info-list">
+            <p><b>Email:</b> dhirendra.kumar@example.com</p>
+            <p><b>Phone:</b> +91-9876543210</p>
+            <p><b>Location:</b> Patna, Bihar, India</p>
+            <p><b>Date of Birth:</b> 12 July 2002</p>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="section">
+          <h3 class="section-title">Education</h3>
+          <p><b>Course:</b> Full Stack Web Development</p>
+          <p><b>Institute:</b> EduLearning Academy</p>
+          <p><b>Batch:</b> 2025</p>
+          <p><b>Progress:</b></p>
+          <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="section">
+          <h3 class="section-title">Skills</h3>
+          <div class="skill"><p>HTML</p><div class="skill-bar"><div class="skill-level" data-skill="90"></div></div></div>
+          <div class="skill"><p>CSS</p><div class="skill-bar"><div class="skill-level" data-skill="85"></div></div></div>
+          <div class="skill"><p>JavaScript</p><div class="skill-bar"><div class="skill-level" data-skill="80"></div></div></div>
+          <div class="skill"><p>React / Node.js</p><div class="skill-bar"><div class="skill-level" data-skill="75"></div></div></div>
+        </div>
+
+        <!-- Learning Goals -->
+        <div class="section">
+          <h3 class="section-title">Learning Goals</h3>
+          <ul>
+            <li>Master React Native for mobile development</li>
+            <li>Build scalable backend using Node.js</li>
+            <li>Contribute to open-source projects</li>
+            <li>Prepare for AWS Developer Certification</li>
+          </ul>
+        </div>
+
+        <!-- Enrolled Courses -->
+        <div class="section">
+          <h3 class="section-title">Enrolled Courses</h3>
+          <p>Frontend Development <span style="float:right;">80%</span></p>
+          <div class="progress-container"><div class="progress-bar" style="width:80%;"></div></div>
+          <p>Backend Development <span style="float:right;">65%</span></p>
+          <div class="progress-container"><div class="progress-bar" style="width:65%;"></div></div>
+          <p>Database Management <span style="float:right;">70%</span></p>
+          <div class="progress-container"><div class="progress-bar" style="width:70%;"></div></div>
+        </div>
+
+        <!-- Feedback -->
+        <div class="section">
+          <h3 class="section-title">Recent Feedback</h3>
+          <div class="feedback">"Great progress this week! Your UI design has improved a lot."</div>
+          <div class="feedback">"Excellent use of APIs in your latest project!"</div>
+        </div>
+
+        <!-- Activity Timeline -->
+        <div class="section">
+          <h3 class="section-title">Activity Timeline</h3>
+          <div class="timeline">
+            <div class="timeline-item"><span>Nov 2025:</span> Completed React Project</div>
+            <div class="timeline-item"><span>Oct 2025:</span> Achieved 75% Course Progress</div>
+            <div class="timeline-item"><span>Sep 2025:</span> Joined Full Stack Program</div>
+          </div>
+        </div>
+
+        <!-- Graph -->
+        <div class="section">
+          <h3 class="section-title">Learning Statistics</h3>
+          <canvas id="learningChart"></canvas>
+        </div>
+          <!-- Activity Chart -->
+      <div class="section">
+        <h3 class="section-title">Learning Activity</h3>
+        <canvas id="activityChart" height="200"></canvas>
+      </div>
+      <!-- Contact & Social -->
+      <div class="section">
+        <h3 class="section-title">Contact & Social</h3>
+        <p><b>Email:</b> dhirendra.kumar@example.com</p>
+        <p><b>Website:</b> www.dhirendra.dev</p>
+        <div class="social-links">
+          <a href="#">LinkedIn</a> | 
+          <a href="#">GitHub</a> | 
+          <a href="#">Twitter</a>
+        </div>
+      </div>
+       <!-- Certificates -->
+      <div class="section certificates">
+        <h3 class="section-title">Certificates & Badges</h3>
+        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Cert 1">
+        <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Cert 2">
+        <img src="https://cdn-icons-png.flaticon.com/512/190/190406.png" alt="Cert 3">
+      </div>
+    </div>
+  </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Animate progress and skill bars
+    window.addEventListener("load", () => {
+      document.getElementById("progressBar").style.width = "75%";
+      document.querySelectorAll(".skill-level").forEach(skill => {
+        skill.style.width = skill.getAttribute("data-skill") + "%";
+      });
+
+      // Learning Statistics Chart
+      const ctx = document.getElementById("learningChart").getContext("2d");
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["HTML", "CSS", "JavaScript", "React", "Node.js"],
+          datasets: [
+            {
+              label: "Skill Level (%)",
+              data: [90, 85, 80, 75, 70],
+              backgroundColor: [
+                "#4e54c8",
+                "#5e63e7",
+                "#7b7efb",
+                "#8f94fb",
+                "#b3b8ff"
+              ],
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: {
+            y: { beginAtZero: true, max: 100 },
+          },
+        },
+      });
+    });
+ // Chart.js Activity Graph
+    const ctx = document.getElementById("activityChart").getContext("2d");
+    new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        datasets: [
+          {
+            label: "Learning Hours",
+            data: [2, 3, 4, 3.5, 5, 4, 2],
+            backgroundColor: "#8f94fb",
+            borderRadius: 5,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+
+  </script>
+</body>
+</html>
