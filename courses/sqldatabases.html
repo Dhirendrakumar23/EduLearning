@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EduLearning — Course Enrollment</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --blue: #1572e8;
+            --green: #10b981;
+            --orange: #f59e0b;
+            --purple: #8b5cf6;
+            --pink: #ec4899;
+            --muted: #6b7280;
+            --bg: linear-gradient(135deg, #f0f9ff, #e0f7fa, #fef9c3);
+            --card: #ffffff;
+            --radius: 14px;
+            --shadow: 0 6px 20px rgba(17, 24, 39, 0.1);
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            background-attachment: fixed;
+            background-size: cover;
+            color: #0f172a;
+            line-height: 1.4;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 32px auto;
+            padding: 16px
+        }
+
+        /* header */
+        .topbar {
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            border: 4px solid rgba(21, 114, 232, 0.08)
+        }
+
+        .brand {
+            font-weight: 700;
+            font-size: 20px
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        /* layout */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 24px;
+            margin-top: 18px
+        }
+
+        /* course overview card */
+        .card {
+            background: linear-gradient(145deg, #ffffff, #f1f5f9);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 20px;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            gap: 12px
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: 22px
+        }
+
+        .hero p {
+            margin: 0;
+            color: var(--muted)
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 12px
+        }
+
+        .pill {
+            background: linear-gradient(135deg, var(--green), var(--blue));
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 16px
+        }
+
+        .feature {
+            display: flex;
+            gap: 10px;
+            align-items: center
+        }
+
+        .feature .dot {
+            width: 10px;
+            height: 10px;
+            background: var(--blue);
+            border-radius: 3px
+        }
+
+        /* right column - form */
+        .form-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        form label {
+            display: block;
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 6px
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid #e6edf3;
+            background: #fff;
+            font-size: 14px
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-top: 12px
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            color: #fff;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, var(--purple), var(--blue));
+            transform: scale(1.05);
+        }
+
+        /*.btn.ghost {
+            background: transparent;
+            color: var(--blue);
+            border: 2px solid var(--blue);
+            transition: all 0.3s ease;
+        }
+
+        .btn.ghost:hover {
+            background: var(--blue);
+            color: #fff;
+        }*/
+
+        .price {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0f172a
+        }
+
+        .small {
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        /* success */
+        .success {
+            display: none;
+            padding: 14px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            color: #065f46;
+            border: 1px solid #6ee7b7;
+            font-weight: 600;
+        }
+
+        /* responsive */
+        @media (max-width:980px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .logo {
+                width: 56px;
+                height: 56px
+            }
+
+            .brand {
+                font-size: 18px
+            }
+
+            .row {
+                grid-template-columns: 1fr
+            }
+        }
+
+        @media (max-width:420px) {
+            .container {
+                padding: 12px;
+                margin: 12px
+            }
+
+            .logo {
+                width: 48px;
+                height: 48px
+            }
+        }
+          /*   button css  */
+        .wrap {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button {
+            min-width: 300px;
+            min-height: 60px;
+            display: inline-flex;
+            font-family: 'Nunito', sans-serif;
+            font-size: 22px;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 1.3px;
+            font-weight: 700;
+            color: #313133;
+            background: #4FD1C5;
+            background: linear-gradient(90deg, rgba(129, 230, 217, 1) 0%, rgba(79, 209, 197, 1) 100%);
+            border: none;
+            border-radius: 1000px;
+            box-shadow: 12px 12px 24px rgba(79, 209, 197, .64);
+            transition: all 0.3s ease-in-out 0s;
+            cursor: pointer;
+            outline: none;
+            position: relative;
+            padding: 10px;
+        }
+
+        .button::before {
+            content: '';
+            border-radius: 1000px;
+            min-width: calc(300px + 12px);
+            min-height: calc(60px + 12px);
+            border: 6px solid #00FFCB;
+            box-shadow: 0 0 60px rgba(0, 255, 203, .64);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: all .3s ease-in-out 0s;
+        }
+
+        .button:hover,
+        .button:focus {
+            color: #313133;
+            transform: translateY(-6px);
+        }
+
+        .button:hover::before,
+        .button:focus::before {
+            opacity: 1;
+        }
+
+        .button::after {
+            content: '';
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+            border: 6px solid #00FFCB;
+            position: absolute;
+            z-index: -1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: ring 1.5s infinite;
+        }
+
+        .button:hover::after,
+        .button:focus::after {
+            animation: none;
+            display: none;
+        }
+
+        @keyframes ring {
+            0% {
+                width: 30px;
+                height: 30px;
+                opacity: 1;
+            }
+
+            100% {
+                width: 300px;
+                height: 300px;
+                opacity: 0;
+            }
+        }
+        .TC{
+padding-left: 8%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="topbar">
+            <div class="logo">
+                <img src="edulogo.png" EduLearning\"_is_circular_and_enclosed_.png" alt="EduLearning Logo"
+                    style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div>
+                <div class="brand">EduLearning</div>
+                <div class="subtitle">Smart courses • Certificate • Lifetime access</div>
+            </div>
+        </header>
+
+        <main class="grid">
+            <!-- left column: course details -->
+            <section class="card">
+                <div class="hero">
+                    <h1>Mysql Database — Bootcamp</h1>
+                    <p class="small">12 weeks • Beginner → Job-ready • 120 hours on-demand</p>
+                </div>
+
+                <div class="course-meta">
+                    <div class="pill">Certificate</div>
+                    <div class="pill">Hands-on Projects</div>
+                    <div class="pill">Lifetime Access</div>
+                    <div class="pill">Mentor Support</div>
+                </div>
+
+                <div class="features">
+                    <div class="feature"><span class="dot"></span>
+                        <div><strong>40+</strong>
+                            <div class="small">Video Lessons</div>
+                        </div>
+                    </div>
+                    <div class="feature"><span class="dot"></span>
+                        <div><strong>6</strong>
+                            <div class="small">Projects</div>
+                        </div>
+                    </div>
+                    <div class="feature"><span class="dot"></span>
+                        <div><strong>1:1</strong>
+                            <div class="small">Mentor Sessions</div>
+                        </div>
+                    </div>
+                    <div class="feature"><span class="dot"></span>
+                        <div><strong>Access</strong>
+                            <div class="small">Mobile & Desktop</div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style="margin:18px 0;border:none;border-top:1px solid #eef3f8">
+                <h3 style="margin:0 0 8px 0;">Course curriculum</h3>
+                <ol style="margin:0 0 0 18px;color:var(--muted)">
+                    <li>Databases Fundamentals,Sql Basics</li>
+                    <li>Intermediate SQL,Advance Database Concept</li>
+                    <li>Database Design,Practical Industry Use</li>
+                    <li>Machine Learning</li>
+                </ol>
+
+                <h3 style="margin-top:20px;">Student Success</h3>
+                <canvas id="successChart" style="max-width:100%;height:250px"></canvas>
+
+                <div style="margin-top:18px">
+                    <p class="small">More than <strong>85%</strong> of our students secured jobs within 3 months of
+                        completion, with top recruiters like Amazon, Microsoft, and startups.</p>
+                </div>
+
+                <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+                    <button class="btn" onclick="window.location.href='courses/course.html'">Preview Course</button>
+                    <!-- <button class="btn ghost"
+                        onclick="document.getElementById('enroll-form').scrollIntoView({behavior:'smooth'})">Enroll
+                        Now</button> -->
+                </div>
+            </section>
+
+            <!-- right column: enrollment form -->
+            <aside class="card">
+                <div class="form-header">
+                    <div>
+                        <div class="small">Secure checkout</div>
+                        <div class="price">₹4,499 <span
+                                style="font-size:14px;font-weight:500;color:var(--muted);">one-time</span></div>
+                    </div>
+                    <div class="small">Limited seats — <strong>23 left</strong></div>
+                </div>
+
+                <form id="enroll-form" onsubmit="handleEnroll(event)" style="margin-top:12px">
+                    <label for="name">Full name</label>
+                    <input id="name" name="name" type="text" placeholder="Your full name" required>
+
+                    <label for="email" style="margin-top:12px">Email</label>
+                    <input id="email" name="email" type="email" placeholder="you@example.com" required>
+
+                    <div class="row" style="margin-top:12px">
+                        <div>
+                            <label for="phone">Phone</label>
+                            <input id="phone" name="phone" type="tel" placeholder="+91 98765 43210">
+                        </div>
+                        <div>
+                            <label for="level">Experience</label>
+                            <select id="level" name="level">
+                                <option>Beginner</option>
+                                <option>Intermediate</option>
+                                <option>Advanced</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <label for="goals" style="margin-top:12px">Your Learning Goals</label>
+                    <textarea id="goals" name="goals" placeholder="Describe what you want to achieve..."
+                        rows="3"></textarea>
+
+                    <label for="coupon" style="margin-top:12px">Coupon code (optional)</label>
+                    <input id="coupon" name="coupon" type="text" placeholder="ENTER CODE">
+
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px">
+                        <div class="small">Choose a payment option</div>
+                        <div class="small">Secure • SSL</div>
+                    </div>
+
+                    <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+                        <button type="button" class="btn ghost" onclick="selectPayment('card')">Card</button>
+                        <button type="button" class="btn ghost" onclick="selectPayment('upi')">UPI</button>
+                        <button type="button" class="btn ghost" onclick="selectPayment('wallet')">Wallet</button>
+                    </div>
+
+                    <div id="payment-details" style="margin-top:12px;display:block"></div>
+
+                    <div class="actions">
+                        <button type="submit" class="btn">Confirm Enrollment</button>
+                        <button type="button" class="btn ghost" onclick="resetForm()">Reset</button>
+                    </div>
+
+                    <div id="success" class="success" role="status">
+                        Enrollment successful! Redirecting to payment options...
+                    </div><br><br><br>
+
+                    <!-- button -->
+                    <div class="wrap">
+                        <button class="button">Submit</a>
+                    </div>
+
+                </form><br><br>
+
+                <div class="TC" style="margin-top:14px;font-size:13px;color:var(--muted)">
+                    By enrolling you agree to our <a href="#" style="color:var(--blue);text-decoration:none">terms</a>
+                    and <a href="#" style="color:var(--blue);text-decoration:none">privacy policy</a>.
+                </div>
+            </aside>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <script>
+        let selectedPayment = null;
+        function selectPayment(type) {
+            selectedPayment = type;
+            const container = document.getElementById('payment-details');
+            if (type === 'card') {
+                container.innerHTML = `
+          <label for="cardnum">Card number</label>
+          <input id="cardnum" name="cardnum" type="text" placeholder="4242 4242 4242 4242" required>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+            <input name="exp" placeholder="MM/YY" required>
+            <input name="cvc" placeholder="CVC" required>
+          </div>
+        `;
+            } else if (type === 'upi') {
+                container.innerHTML = `
+          <label for="upiid">UPI ID</label>
+          <input id="upiid" name="upiid" placeholder="yourid@bank" required>
+        `;
+            } else if (type === 'wallet') {
+                container.innerHTML = `
+          <label for="wallet">Wallet Mobile</label>
+          <input id="wallet" name="wallet" placeholder="+91 9xxxx xxxxx" required>
+        `;
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('enroll-form').reset();
+            document.getElementById('payment-details').innerHTML = '';
+            selectedPayment = null;
+            document.getElementById('success').style.display = 'none';
+        }
+
+        function handleEnroll(e) {
+            e.preventDefault();
+            if (!selectedPayment) {
+                alert('Please select a payment option (Card / UPI / Wallet)');
+                return;
+            }
+            document.getElementById('success').style.display = 'block';
+            setTimeout(() => {
+                const go = confirm('Enrollment saved. Do you want to proceed to payment?');
+                if (go) {
+                    window.location.href = '/buy?course=fullstack&amount=4499';
+                } else {
+                    alert('You can complete payment later from your dashboard.');
+                }
+            }, 500);
+        }
+
+        // Chart.js datagram
+        window.addEventListener('DOMContentLoaded', () => {
+            const ctx = document.getElementById('successChart');
+            const dataValues = [70, 10, 20];
+
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Got Jobs', 'Freelancing', 'Higher Studies'],
+                    datasets: [{
+                        data: dataValues,
+                        backgroundColor: ['#1572e8', '#10b981', '#f59e0b']
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                generateLabels: (chart) => {
+                                    const data = chart.data;
+                                    const dataset = data.datasets[0];
+                                    const total = dataset.data.reduce((a, b) => a + b, 0);
+
+                                    return data.labels.map((label, i) => {
+                                        const value = dataset.data[i];
+                                        const percentage = ((value / total) * 100).toFixed(0) + "%";
+                                        return {
+                                            text: `${label} — ${percentage}`,
+                                            fillStyle: dataset.backgroundColor[i],
+                                            hidden: false,
+                                            index: i
+                                        };
+                                    });
+                                }
+                            }
+                        },
+                        datalabels: {
+                            color: '#fff',
+                            font: {
+                                weight: 'bold'
+                            },
+                            formatter: (value, ctx) => {
+                                let sum = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                                let percentage = (value * 100 / sum).toFixed(0) + "%";
+                                return percentage;
+                            }
+                        }
+                    }
+                },
+                plugins: [ChartDataLabels]
+            });
+        });
+    </script>
+</body>
+
+</html>
