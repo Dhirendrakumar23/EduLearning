@@ -200,17 +200,7 @@
             transform: scale(1.05);
         }
 
-        /*.btn.ghost {
-            background: transparent;
-            color: var(--blue);
-            border: 2px solid var(--blue);
-            transition: all 0.3s ease;
-        }
-
-        .btn.ghost:hover {
-            background: var(--blue);
-            color: #fff;
-        }*/
+       
 
         .price {
             font-size: 22px;
@@ -434,9 +424,7 @@ padding-left: 8%;
 
                 <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
                     <button class="btn" onclick="window.location.href='courses/course.html'">Preview Course</button>
-                    <!-- <button class="btn ghost"
-                        onclick="document.getElementById('enroll-form').scrollIntoView({behavior:'smooth'})">Enroll
-                        Now</button> -->
+                   
                 </div>
             </section>
 
@@ -482,18 +470,7 @@ padding-left: 8%;
                     <label for="coupon" style="margin-top:12px">Coupon code (optional)</label>
                     <input id="coupon" name="coupon" type="text" placeholder="ENTER CODE">
 
-                    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px">
-                        <div class="small">Choose a payment option</div>
-                        <div class="small">Secure • SSL</div>
-                    </div>
-
-                    <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-                        <button type="button" class="btn ghost" onclick="selectPayment('card')">Card</button>
-                        <button type="button" class="btn ghost" onclick="selectPayment('upi')">UPI</button>
-                        <button type="button" class="btn ghost" onclick="selectPayment('wallet')">Wallet</button>
-                    </div>
-
-                    <div id="payment-details" style="margin-top:12px;display:block"></div>
+                   
 
                     <div class="actions">
                         <button type="submit" class="btn">Confirm Enrollment</button>
@@ -522,32 +499,7 @@ padding-left: 8%;
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
     <script>
-        let selectedPayment = null;
-        function selectPayment(type) {
-            selectedPayment = type;
-            const container = document.getElementById('payment-details');
-            if (type === 'card') {
-                container.innerHTML = `
-          <label for="cardnum">Card number</label>
-          <input id="cardnum" name="cardnum" type="text" placeholder="4242 4242 4242 4242" required>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
-            <input name="exp" placeholder="MM/YY" required>
-            <input name="cvc" placeholder="CVC" required>
-          </div>
-        `;
-            } else if (type === 'upi') {
-                container.innerHTML = `
-          <label for="upiid">UPI ID</label>
-          <input id="upiid" name="upiid" placeholder="yourid@bank" required>
-        `;
-            } else if (type === 'wallet') {
-                container.innerHTML = `
-          <label for="wallet">Wallet Mobile</label>
-          <input id="wallet" name="wallet" placeholder="+91 9xxxx xxxxx" required>
-        `;
-            }
-        }
-
+       
         function resetForm() {
             document.getElementById('enroll-form').reset();
             document.getElementById('payment-details').innerHTML = '';

@@ -200,18 +200,6 @@
             transform: scale(1.05);
         }
 
-        /*.btn.ghost {
-            background: transparent;
-            color: var(--blue);
-            border: 2px solid var(--blue);
-            transition: all 0.3s ease;
-        }
-
-        .btn.ghost:hover {
-            background: var(--blue);
-            color: #fff;
-        }*/
-
         .price {
             font-size: 22px;
             font-weight: 700;
@@ -433,9 +421,7 @@ padding-left: 8%;
 
                 <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
                     <button class="btn" onclick="window.location.href='courses/course.html'">Preview Course</button>
-                    <!-- <button class="btn ghost"
-                        onclick="document.getElementById('enroll-form').scrollIntoView({behavior:'smooth'})">Enroll
-                        Now</button> -->
+                 
                 </div>
             </section>
 
@@ -479,21 +465,10 @@ padding-left: 8%;
                     <label for="coupon" style="margin-top:12px">Coupon code (optional)</label>
                     <input id="coupon" name="coupon" type="text" placeholder="ENTER CODE">
 
-                    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px">
-                        <div class="small">Choose a payment option</div>
-                        <div class="small">Secure • SSL</div>
-                    </div>
-
-                    <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-                        <button type="button" class="btn ghost" onclick="selectPayment('card')">Card</button>
-                        <button type="button" class="btn ghost" onclick="selectPayment('upi')">UPI</button>
-                        <button type="button" class="btn ghost" onclick="selectPayment('wallet')">Wallet</button>
-                    </div>
-
-                    <div id="payment-details" style="margin-top:12px;display:block"></div>
+                 
 
                     <div class="actions">
-                        <button type="submit" class="btn">Confirm Enrollment</button>
+                        <button type="submit" class="btn">Enroll</button>
                         <button type="button" class="btn ghost" onclick="resetForm()">Reset</button>
                     </div>
 
@@ -503,7 +478,7 @@ padding-left: 8%;
 
                     <!-- button -->
                     <div class="wrap">
-                        <button class="button">Submit</a>
+                        <button class="button">Payment</a>
                     </div>
 
                 </form><br><br>
@@ -542,7 +517,6 @@ padding-left: 8%;
         `;
             }
         }
-
         function resetForm() {
             document.getElementById('enroll-form').reset();
             document.getElementById('payment-details').innerHTML = '';
@@ -620,6 +594,13 @@ padding-left: 8%;
                 plugins: [ChartDataLabels]
             });
         });
+        //submit alert
+        function handleEnroll(event) {
+    event.preventDefault();
+    alert("Successfully Enrolled");
+    document.getElementById("success").style.display = "block";
+}
+
     </script>
 </body>
 
